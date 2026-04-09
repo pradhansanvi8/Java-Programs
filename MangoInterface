@@ -1,0 +1,22 @@
+interface Mango {
+    void taste();
+}
+
+class Winter implements Mango {
+    public void taste() {
+        System.out.println("Winter Mango: Sweet");
+    }
+}
+
+class Summer implements Mango {
+    public void taste() {
+        System.out.println("Summer Mango: Juicy");
+    }
+}
+
+public class Main5 {
+    public static void main(String[] args) {
+        new Winter().taste();
+        new Summer().taste();
+    }
+}
