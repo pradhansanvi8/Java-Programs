@@ -1,49 +1,55 @@
-#include <iostream>
-#include <iomanip>   
-using namespace std;
+import java.util.*;
 
 class Item {
+
     int code;
+
     float price;
 
-public:
-    void getData() {
-        cout << "Enter item code: ";
-        cin >> code;
-        cout << "Enter item price: ";
-        cin >> price;
+    void input(Scanner sc) {
+
+        code = sc.nextInt();
+
+        price = sc.nextFloat();
+
     }
 
-    void putData() {
-        cout << setw(10) << code << setw(10) << price << endl;
+    void display() {
+
+        System.out.printf("%10d%10.2f\n", code, price);
+
     }
 
-    float getPrice() {
-        return price;
-    }
-};
+}
 
-int main() {
-    Item items[5];
-    float total = 0;
+public class Main {
 
-    cout << "Enter details for 5 items:\n";
-    for (int i = 0; i < 5; i++) {
-        cout << "\nItem " << i + 1 << ":\n";
-        items[i].getData();
-    }
+    public static void main(String[] args) {
 
-    cout << "\n\nItem Details:\n";
-    cout << setw(10) << "Code" << setw(10) << "Price" << endl;
-    cout << "----------------------\n";
+        Scanner sc = new Scanner(System.in);
 
-    for (int i = 0; i < 5; i++) {
-        items[i].putData();
-        total += items[i].getPrice();
-    }
+        Item[] a = new Item[5];
 
-    cout << "----------------------\n";
-    cout << setw(10) << "Total" << setw(10) << total << endl;
+        float total = 0;
 
-    return 0;
+        for (int i = 0; i < 5; i++) {
+
+            a[i] = new Item();
+
+            a[i].input(sc);
+
+        }
+
+        System.out.printf("%10s%10s\n", "Code", "Price");
+
+        for (int i = 0; i < 5; i++) {
+
+            a[i].display();
+
+            total += a[i].price;
+
+        }
+
+        System.out.printf("%10s%10.2f", "Total", total);
+}
 }
