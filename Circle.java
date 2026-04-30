@@ -1,53 +1,53 @@
-#include <iostream>
-using namespace std;
+import java.util.*;
 
 class Point {
+
     int x, y;
 
-public:
-    void setPoint(int a, int b) {
-        x = a;
-        y = b;
-    }
+    void set(int a, int b) { x = a; y = b; }
 
-    void displayPoint() {
-        cout << "(" << x << ", " << y << ")";
-    }
-};
+    void show() { System.out.print("(" + x + "," + y + ")"); }
+
+}
 
 class Circle {
-    float radius;
-    Point center;  
 
-public:
-    void getData() {
-        int x, y;
-        cout << "Enter center coordinates (x y): ";
-        cin >> x >> y;
-        center.setPoint(x, y);
+    float r;
 
-        cout << "Enter radius: ";
-        cin >> radius;
-    }
+    Point c = new Point();
 
-    float area() {
-        return 3.14159 * radius * radius;
+    void input(Scanner sc) {
+
+        c.set(sc.nextInt(), sc.nextInt());
+
+        r = sc.nextFloat();
+
     }
 
     void display() {
-        cout << "\nCircle Details:\n";
-        cout << "Center: ";
-        center.displayPoint();
-        cout << "\nRadius: " << radius;
-        cout << "\nArea: " << area() << endl;
+
+        System.out.print("Center: ");
+
+        c.show();
+
+        System.out.println("\nRadius: " + r + "\nArea: " + (3.14 * r * r));
+
     }
-};
 
-int main() {
-    Circle c;
+}
 
-    c.getData();
-    c.display();
+public class Main {
 
-    return 0;
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        Circle obj = new Circle();
+
+        obj.input(sc);
+
+        obj.display();
+
+    }
+
 }
