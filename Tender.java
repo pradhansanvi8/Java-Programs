@@ -1,48 +1,20 @@
-#include <iostream>
-using namespace std;
+import java.util.*;
 
-class Tender {
-    float cost;
-    char company[50];
-
-public:
-    void getData() {
-        cout << "Enter company name: ";
-        cin >> company;
-        cout << "Enter cost: ";
-        cin >> cost;
-    }
-
-    float getCost() {
-        return cost;
-    }
-
-    char* getCompany() {
-        return company;
-    }
-};
-
-int main() {
-    Tender t[5];
-
-    cout << "Enter details for 5 tenders:\n";
-    for (int i = 0; i < 5; i++) {
-        cout << "\nTender " << i + 1 << ":\n";
-        t[i].getData();
+class T{
+    String c; float cost;
+    void i(Scanner s){ c=s.next(); cost=s.nextFloat(); }
 }
-    float minCost = t[0].getCost();
-    int minIndex = 0;
 
-    for (int i = 1; i < 5; i++) {
-        if (t[i].getCost() < minCost) {
-            minCost = t[i].getCost();
-            minIndex = i;
-        }
+public class Main{
+    public static void main(String[] a){
+        Scanner s=new Scanner(System.in);
+        T[] t=new T[5];
+        for(int i=0;i<5;i++){ t[i]=new T(); t[i].i(s); }
+
+        int m=0;
+        for(int i=1;i<5;i++)
+            if(t[i].cost<t[m].cost) m=i;
+
+        System.out.println(t[m].c+" "+t[m].cost);
     }
-
-    cout << "\nCompany with minimum cost: "
-         << t[minIndex].getCompany() << endl;
-    cout << "Minimum cost: " << minCost << endl;
-
-    return 0;
 }
